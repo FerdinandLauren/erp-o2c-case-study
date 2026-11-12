@@ -34,7 +34,7 @@ It is **not** a software product, a working ERP, or a configuration guide.
 | 2 | Requirements and process design | Days 5–9 | **Complete as a draft baseline** — To-Be process, 23 FR, 22 AC, 11 NFR, 15 BR, traceability matrix |
 | 3 | Fit-gap analysis and solution blueprint | Days 10–15 | **Complete as a draft baseline** — 23 fit-gap findings, blueprint, 9 roles, 25 data entities, 7 interfaces |
 | 4 | Testing and migration readiness | Days 16–20 | **Complete as a draft baseline** — 33 UAT scenarios (all `Not run`), 12 migration objects, 29 reconciliation checks, 3 synthetic CSV samples |
-| 5 | Deployment and portfolio preparation | Days 21–25 | Planned |
+| 5 | Deployment and portfolio preparation | Days 21–25 | **Complete as a draft baseline** — cutover, hypercare, and change plans, executive summary, portfolio case study; Gate 5 evidence recorded |
 
 Status definitions: `Complete as a draft baseline` = written, internally consistent, and gated on evidence, but not validated by a business owner (none exists in a fictional scenario); `Planned` = not started.
 
@@ -94,14 +94,15 @@ Status definitions: `Complete as a draft baseline` = written, internally consist
 | `data/sample-sales-orders.csv` | Synthetic sales order sample — 15 orders / 30 lines across 10 statuses | Complete (synthetic) |
 | `data/README.md` | Data dictionary, edge cases, and derived totals | Complete |
 
-### 3.6 Phase 5 deliverables (planned)
+### 3.6 Phase 5 deliverables
 
-| Path | Deliverable |
-|---|---|
-| `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria |
-| `docs/hypercare-plan.md` | Hypercare Plan |
-| `docs/change-management-plan.md` | Change Management and Training Plan |
-| `portfolio/case-study.md` | Portfolio case study narrative |
+| Path | Deliverable (per `Plan.md` §3) | Status |
+|---|---|---|
+| `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria — 12 entry criteria, relative runbook, rollback, communication | Draft — no cutover performed |
+| `docs/hypercare-plan.md` | Hypercare Plan — four-week structure, severity model, control checks, exit criteria | Draft — no hypercare run |
+| `docs/change-management-plan.md` | Change Management and Training Plan — role impact, 11 training tracks, readiness, resistance | Draft — no training delivered |
+| `docs/executive-summary.md` | Executive Summary — problem, approach, decisions, limits | Complete |
+| `portfolio/case-study.md` | Portfolio Case Study narrative | Complete |
 
 Notes:
 
@@ -251,7 +252,30 @@ A reviewer should read Gate 4 as "the design is falsifiable and ready to test", 
 
 ---
 
-## 10. Working rules for this repository
+## 10. Phase 5 gate evidence (`Plan.md` §6, Gate 5)
+
+| Gate 5 criterion | Evidence | Status |
+|---|---|---|
+| Documentation is consistent | Consistency check across 20 documents: all ID ranges complete (FR 23, AC 22, NFR 11, BR 15, DEC 21, DQ 63, FG 23, FG-P 8, CFG 23, ROL 9, SOD 10, DE 25, INT 7, UAT 33, DM 12); no dangling references; table columns consistent; CSV referential integrity verified | Met |
+| Diagrams are readable | Five Mermaid sources render on GitHub: As-Is, To-Be, reverse flow, solution architecture, data model | Met |
+| Assumptions and limitations are transparent | `docs/assumptions-risks.md`, `docs/discovery-questions.md` §5.1, each document's limits section, `README.md` §1 and §11 | Met |
+| README provides a clear navigation path | `README.md` §3 document map, §4 reading order, §5 identifier conventions | Met |
+| Cutover and hypercare plans exist | `docs/cutover-plan.md`, `docs/hypercare-plan.md` | Met |
+| Change management and training are addressed | `docs/change-management-plan.md` | Met |
+| Executive summary and portfolio case study exist | `docs/executive-summary.md`, `portfolio/case-study.md` | Met |
+| The case study does not claim a real deployment | Integrity statement in `README.md` §1; "what is not proven" in the executive summary and case study | Met |
+
+**Gate 5 pass condition in this simulation:** the repository is complete and internally consistent as a **portfolio case study**. It is not a completed implementation. Three limits remain structural:
+
+1. **No product, no validation.** Fit classifications remain hypotheses (`DQ-61`, `DQ-63`).
+2. **No execution.** No test, migration, cutover, hypercare period, or training session has occurred.
+3. **No business sign-off.** The company is fictional; no stakeholder reviewed or approved anything (`DQ-56`).
+
+A reviewer should read Gate 5 as "the portfolio artefact is complete and honest", not "the project went live".
+
+---
+
+## 11. Working rules for this repository
 
 - Documents and analysis only. No application is built, and no ERP environment is installed (`Plan.md` §8).
 - Vendor-neutral language. Capability statements are hypotheses until validated (`PRD.md` §8).
@@ -261,7 +285,7 @@ A reviewer should read Gate 4 as "the design is falsifiable and ready to test", 
 
 ---
 
-## 11. Version history
+## 12. Version history
 
 | Version | Date | Change |
 |---|---|---|
@@ -269,3 +293,4 @@ A reviewer should read Gate 4 as "the design is falsifiable and ready to test", 
 | 0.2 | 12 Nov 2026 | Phase 2 complete as a draft baseline: To-Be process, requirements catalogue, traceability matrix, three Mermaid diagram sources; Gate 2 evidence added; provisional decisions `DEC-11`–`DEC-21` recorded and linked |
 | 0.3 | 12 Nov 2026 | Phase 3 complete as a draft baseline: fit-gap analysis, functional blueprint, role and authorization matrix, data catalogue, integration inventory, architecture and data-model diagrams; Gate 3 evidence added |
 | 0.4 | 12 Nov 2026 | Phase 4 complete as a draft baseline: UAT plan with 33 scenarios, data migration plan with 12 objects and 29 reconciliation checks, three synthetic sample CSVs with a data dictionary; traceability matrix v0.2 adds the `UAT` column; Gate 4 evidence added. No test was executed. |
+| 0.5 | 12 Nov 2026 | Phase 5 complete as a draft baseline: cutover plan, hypercare plan, change management and training plan, executive summary, portfolio case study; Gate 5 evidence added. Repository released as `v1.0`. |
