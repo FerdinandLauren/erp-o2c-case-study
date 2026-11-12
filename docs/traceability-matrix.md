@@ -1,10 +1,10 @@
 # Requirement Traceability Matrix
 
 **Document ID:** TRM-01
-**Version:** 0.1 (Draft)
-**Phase:** 2 — Requirements and Process Design
-**Sources:** `docs/requirements.md`, `docs/to-be-process.md`, `docs/as-is-process.md`, `docs/discovery-questions.md`
-**Status:** Draft — complete for Phase 2; UAT references added in Phase 4
+**Version:** 0.2 (Draft)
+**Phase:** 2–4 — Requirements and Process Design; Testing and Migration Readiness
+**Sources:** `docs/requirements.md`, `docs/to-be-process.md`, `docs/as-is-process.md`, `docs/discovery-questions.md`, `docs/UAT-plan.md`
+**Status:** Draft — forward and reverse trace complete; every FR now carries a planned UAT scenario. Scenarios are **planned, not executed**.
 
 ---
 
@@ -27,31 +27,33 @@ Rules:
 
 ## 2. Forward traceability
 
-| FR | Requirement (short) | Stage | BR | NFR | AC | Justified by | Status |
-|---|---|---|---|---|---|---|---|
-| FR-01 | Customer master with unique ID | S1 | BR-01, BR-13 | NFR-04 | AC-01 | PP-01, CG-01 | Baseline |
-| FR-02 | Product master with unique ID and UoM | S1 | BR-01, BR-13 | NFR-04 | AC-02 | PP-01, CG-01 | Baseline |
-| FR-03 | Create and update sales orders | S2 | BR-02 | NFR-01, NFR-02 | AC-03, AC-04 | PP-03 | Baseline |
-| FR-04 | Validate order fields | S3 | BR-02 | NFR-07 | AC-05 | PP-03 | Baseline |
-| FR-05 | Inventory availability information | S4 | BR-03 | — | AC-06 | PP-02 | Baseline |
-| FR-06 | Configurable approval rules | S5 | BR-04, BR-09 | NFR-01 | — (Should) | CG-02, OBJ-02 | Baseline |
-| FR-07 | Fulfilment requirement from confirmed orders | S6 | BR-03 | — | AC-07 | PP-03 | Baseline |
-| FR-08 | Record picked, packed, shipped quantities | S6 | BR-05, BR-14 | — | AC-08 | PP-03, PP-04 | Baseline |
-| FR-09 | Delivery status and evidence | S7 | BR-10 | — | — (Should) | PP-04, CG-04 | Baseline |
-| FR-10 | Invoice from approved billing trigger | S8 | BR-06, BR-10 | — | AC-09, AC-10 | PP-05, CG-05 | Baseline |
-| FR-11 | Invoice status tracking | S8, S10 | BR-06 | NFR-08 | AC-11 | PP-05, CG-05 | Baseline |
-| FR-12 | Record and allocate payments | S9 | BR-07 | — | AC-12, AC-13 | CG-06 | Baseline |
-| FR-13 | End-to-end traceability | S2–S10 | BR-07 | — | AC-14 | PP-04, CG-04 | Baseline |
-| FR-14 | Operational reports | S10 | — | NFR-08 | — (Should) | PP-06, CG-07 | Baseline |
-| FR-15 | Transaction history for audit | All | BR-13 | NFR-02 | AC-15 | CG-08, CG-02 | Baseline |
-| FR-16 | Returns and credit notes | R1–R5 | BR-12, BR-15 | — | AC-16, AC-17 | DQ-22, EX-08 | Proposed |
-| FR-17 | Credit exposure check and block | S5 | BR-09 | NFR-01 | AC-18 | DQ-45, CG-02 | Proposed |
-| FR-18 | Backorder and outstanding quantity | S6–S7 | BR-05, BR-14 | — | — (Should) | DQ-26, PP-02 | Proposed |
-| FR-19 | Price determination and override control | S2, S8 | BR-11 | — | AC-19 | DQ-17, PP-05 | Proposed |
-| FR-20 | Lifecycle status and valid transitions | All | BR-08 | NFR-07 | AC-20 | PP-04, CG-04 | Proposed |
-| FR-21 | Exception register with reason and owner | S3–S10 | — | NFR-08 | — (Should) | KPI-07, CG-07 | Proposed |
-| FR-22 | Statutory invoice data | S8 | BR-06 | — | AC-21, AC-22 | DQ-37 | Proposed |
-| FR-23 | Duplicate detection at master data entry | S1 | BR-01 | NFR-04 | — (Should) | PP-01, CG-01 | Proposed |
+| FR | Requirement (short) | Stage | BR | NFR | AC | UAT | Justified by | Status |
+|---|---|---|---|---|---|---|---|---|
+| FR-01 | Customer master with unique ID | S1 | BR-01, BR-13 | NFR-04 | AC-01 | UAT-02 | PP-01, CG-01 | Baseline |
+| FR-02 | Product master with unique ID and UoM | S1 | BR-01, BR-13 | NFR-04 | AC-02 | UAT-03 | PP-01, CG-01 | Baseline |
+| FR-03 | Create and update sales orders | S2 | BR-02 | NFR-01, NFR-02 | AC-03, AC-04 | UAT-01, UAT-04 | PP-03 | Baseline |
+| FR-04 | Validate order fields | S3 | BR-02 | NFR-07 | AC-05 | UAT-06 | PP-03 | Baseline |
+| FR-05 | Inventory availability information | S4 | BR-03 | — | AC-06 | UAT-07 | PP-02 | Baseline |
+| FR-06 | Configurable approval rules | S5 | BR-04, BR-09 | NFR-01 | — (Should) | UAT-01, UAT-22 | CG-02, OBJ-02 | Baseline |
+| FR-07 | Fulfilment requirement from confirmed orders | S6 | BR-03 | — | AC-07 | UAT-01, UAT-08 | PP-03 | Baseline |
+| FR-08 | Record picked, packed, shipped quantities | S6 | BR-05, BR-14 | — | AC-08 | UAT-09 | PP-03, PP-04 | Baseline |
+| FR-09 | Delivery status and evidence | S7 | BR-10 | — | — (Should) | UAT-23 | PP-04, CG-04 | Baseline |
+| FR-10 | Invoice from approved billing trigger | S8 | BR-06, BR-10 | — | AC-09, AC-10 | UAT-01, UAT-10 | PP-05, CG-05 | Baseline |
+| FR-11 | Invoice status tracking | S8, S10 | BR-06 | NFR-08 | AC-11 | UAT-11 | PP-05, CG-05 | Baseline |
+| FR-12 | Record and allocate payments | S9 | BR-07 | — | AC-12, AC-13 | UAT-01, UAT-12, UAT-13 | CG-06 | Baseline |
+| FR-13 | End-to-end traceability | S2–S10 | BR-07 | — | AC-14 | UAT-01 | PP-04, CG-04 | Baseline |
+| FR-14 | Operational reports | S10 | — | NFR-08 | — (Should) | UAT-25 | PP-06, CG-07 | Baseline |
+| FR-15 | Transaction history for audit | All | BR-13 | NFR-02 | AC-15 | UAT-14 | CG-08, CG-02 | Baseline |
+| FR-16 | Returns and credit notes | R1–R5 | BR-12, BR-15 | — | AC-16, AC-17 | UAT-15, UAT-16 | DQ-22, EX-08 | Proposed |
+| FR-17 | Credit exposure check and block | S5 | BR-09 | NFR-01 | AC-18 | UAT-17 | DQ-45, CG-02 | Proposed |
+| FR-18 | Backorder and outstanding quantity | S6–S7 | BR-05, BR-14 | — | — (Should) | UAT-24 | DQ-26, PP-02 | Proposed |
+| FR-19 | Price determination and override control | S2, S8 | BR-11 | — | AC-19 | UAT-18 | DQ-17, PP-05 | Proposed |
+| FR-20 | Lifecycle status and valid transitions | All | BR-08 | NFR-07 | AC-20 | UAT-19 | PP-04, CG-04 | Proposed |
+| FR-21 | Exception register with reason and owner | S3–S10 | — | NFR-08 | — (Should) | UAT-26 | KPI-07, CG-07 | Proposed |
+| FR-22 | Statutory invoice data | S8 | BR-06 | — | AC-21, AC-22 | UAT-20, UAT-21, UAT-30 | DQ-37 | Proposed |
+| FR-23 | Duplicate detection at master data entry | S1 | BR-01 | NFR-04 | — (Should) | UAT-02, UAT-27 | PP-01, CG-01 | Proposed |
+
+**Reading the `UAT` column:** this is a *planned* link, not a result. Every scenario in `docs/UAT-plan.md` is `Not run` — there is no configured system. The column proves the requirement is testable and that no requirement was quietly left untested; it does not prove the requirement is met.
 
 ---
 
@@ -103,16 +105,17 @@ A KPI that cannot be derived from transaction data is a wish. This table proves 
 
 | Measure | Count | Coverage |
 |---|---|---|
-| Functional requirements | 23 | 100% mapped to a stage |
+| Functional requirements | 23 | 100% mapped to a stage and to at least one UAT scenario |
 | `Must` FRs with owner | 17 / 17 | 100% |
 | `Must` FRs with acceptance criteria | 17 / 17 | 100% |
-| `Should` FRs with acceptance criteria | 0 / 6 | Deferred to Phase 4 best effort |
-| Acceptance criteria | 22 | All traced back to FR |
+| `Should` FRs with a UAT scenario | 6 / 6 | UAT-22…UAT-27 (no acceptance criteria; scenario is the only test) |
+| Acceptance criteria | 22 | All traced back to FR and forward to a scenario |
 | Business rules | 15 | All have an enforcement point |
-| NFRs | 11 | 4 `Must`, 7 `Should`; targets pending input |
+| NFRs | 11 | 3 tested in UAT (NFR-01, NFR-08, NFR-11); rest need architecture or volume evidence |
 | Pain points covered | 6 / 6 | 100% |
 | Control gaps covered | 8 / 8 | 100% (CG-03 via NFR-01 in Phase 3) |
 | KPIs with a data source | 7 / 7 | 100% |
+| UAT scenarios | 33 | 22 / 22 AC and 6 / 6 `Should` FRs covered; all `Not run` |
 
 ### 4.1 Orphan check
 
@@ -121,8 +124,10 @@ A KPI that cannot be derived from transaction data is a wish. This table proves 
 | FR with no justification | None |
 | FR with no stage | None |
 | FR with no owner | None |
+| FR with no UAT scenario | None |
 | BR with no enforcement point | None |
 | AC with no FR | None |
+| AC with no UAT scenario | None |
 | PP/CG with no FR | None |
 
 ---
@@ -131,11 +136,12 @@ A KPI that cannot be derived from transaction data is a wish. This table proves 
 
 | Gap | Consequence | When resolved |
 |---|---|---|
-| `Should` FRs have no acceptance criteria | Lower confidence in approval workflow, delivery evidence, reporting, backorder, exception register, duplicate detection | Phase 4 |
+| `Should` FRs have no acceptance criteria | Their UAT scenario is written directly from the requirement wording, so the expected result rests on one author's reading | When business owners review `docs/UAT-plan.md` |
 | NFR targets are unquantified | Cannot test performance or retention objectively | After `DQ-05`, `DQ-51`, `DQ-59` |
 | Business rules are policy placeholders | UAT would test the design, not the approved policy | After `DQ-33`, `DQ-45`, `DQ-46`, `DQ-17` |
-| Returns flow is `Proposed` | If excluded from wave 1, FR-16 and R1–R5 are deferred | `DQ-22` |
-| Tax and e-invoice scope unconfirmed | FR-22 may become an integration requirement | `DQ-37` |
+| Returns flow is `Proposed` | If excluded from wave 1, FR-16, UAT-15, UAT-16, and R1–R5 are deferred | `DQ-22` |
+| Tax and e-invoice scope unconfirmed | FR-22 and UAT-20, UAT-21, UAT-30 may change entirely | `DQ-37` |
+| No scenario executed | Every UAT status is `Not run`; "covered" means testable, not tested | When a system exists (`DEP-07`) |
 | No UI or screen design | Requirements are behavioural, not visual | Phase 3 (role design), not a gap in Phase 2 |
 
 ---
@@ -146,8 +152,18 @@ A KPI that cannot be derived from transaction data is a wish. This table proves 
 |---|---|
 | New requirement added | Add row in §2 and §3; update counts in §4 |
 | Requirement withdrawn | Keep row, mark `Withdrawn`, add reason and date |
-| Phase 4 test created | Add `UAT-` reference to the matching FR row |
+| Phase 4 test created | Add `UAT-` reference to the matching FR row (done in v0.2) |
+| UAT scenario executed | Record the result in `docs/UAT-plan.md`; this matrix records only the link, not the outcome |
 | Phase 3 fit-gap changes scope | Re-check §5; a deferred requirement must be visible, not silently dropped |
 | Blocker question answered | Re-validate the FRs that depend on it; record the change in `docs/requirements.md` §8 |
 
 This matrix is the audit trail of the design. If a future reviewer cannot connect a test back to a business problem through this table, the design has a hole.
+
+---
+
+## 7. Change log
+
+| Version | Date | Change |
+|---|---|---|
+| 0.1 | 12 Nov 2026 | Initial forward and reverse traceability matrix for Phase 2 |
+| 0.2 | 12 Nov 2026 | Added the `UAT` column to §2 linking all 23 FRs to the 33 planned scenarios in `docs/UAT-plan.md`; added `Should`-FR coverage and UAT scenario count to §4; extended the orphan check; added the "not executed" limitation to §5. Scenario results are not recorded here. |

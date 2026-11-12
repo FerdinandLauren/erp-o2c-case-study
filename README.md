@@ -33,7 +33,7 @@ It is **not** a software product, a working ERP, or a configuration guide.
 | 1 | Business discovery | Days 1–4 | **Complete as a draft baseline** — 5 deliverables, 63 open questions, Gate 1 evidence recorded |
 | 2 | Requirements and process design | Days 5–9 | **Complete as a draft baseline** — To-Be process, 23 FR, 22 AC, 11 NFR, 15 BR, traceability matrix |
 | 3 | Fit-gap analysis and solution blueprint | Days 10–15 | **Complete as a draft baseline** — 23 fit-gap findings, blueprint, 9 roles, 25 data entities, 7 interfaces |
-| 4 | Testing and migration readiness | Days 16–20 | Planned |
+| 4 | Testing and migration readiness | Days 16–20 | **Complete as a draft baseline** — 33 UAT scenarios (all `Not run`), 12 migration objects, 29 reconciliation checks, 3 synthetic CSV samples |
 | 5 | Deployment and portfolio preparation | Days 21–25 | Planned |
 
 Status definitions: `Complete as a draft baseline` = written, internally consistent, and gated on evidence, but not validated by a business owner (none exists in a fictional scenario); `Planned` = not started.
@@ -83,19 +83,25 @@ Status definitions: `Complete as a draft baseline` = written, internally consist
 | `diagrams/solution-architecture.mmd` | Conceptual architecture diagram source | Draft |
 | `diagrams/o2c-data-model.mmd` | Entity-relationship diagram source | Draft |
 
-### 3.5 Phase 4–5 deliverables (planned)
+### 3.5 Phase 4 deliverables
 
-| Path | Deliverable | Phase |
+| Path | Deliverable (per `Plan.md` §3) | Status |
 |---|---|---|
-| `docs/UAT-plan.md` | UAT Plan and Scenario Catalogue | 4 |
-| `docs/data-migration-plan.md` | Data Migration Plan and Reconciliation Checklist | 4 |
-| `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria | 5 |
-| `docs/hypercare-plan.md` | Hypercare Plan | 5 |
-| `docs/change-management-plan.md` | Change Management and Training Plan | 5 |
-| `data/sample-customer-master.csv` | Synthetic customer master sample | 4 |
-| `data/sample-product-master.csv` | Synthetic product master sample | 4 |
-| `data/sample-sales-orders.csv` | Synthetic sales order sample | 4 |
-| `portfolio/case-study.md` | Portfolio case study narrative | 5 |
+| `docs/UAT-plan.md` | UAT Plan and Scenario Catalogue — 33 scenarios, 22/22 AC and 6/6 `Should` FR coverage, 5 detailed scripts | Draft — **plan only, every scenario `Not run`** |
+| `docs/data-migration-plan.md` | Data Migration Plan and Reconciliation Checklist — 12 objects, 15 cleansing rules, 29 reconciliation checks | Draft — no source extract, no load performed |
+| `data/sample-customer-master.csv` | Synthetic customer master sample — 12 customers | Complete (synthetic) |
+| `data/sample-product-master.csv` | Synthetic product master sample — 20 products | Complete (synthetic) |
+| `data/sample-sales-orders.csv` | Synthetic sales order sample — 15 orders / 30 lines across 10 statuses | Complete (synthetic) |
+| `data/README.md` | Data dictionary, edge cases, and derived totals | Complete |
+
+### 3.6 Phase 5 deliverables (planned)
+
+| Path | Deliverable |
+|---|---|
+| `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria |
+| `docs/hypercare-plan.md` | Hypercare Plan |
+| `docs/change-management-plan.md` | Change Management and Training Plan |
+| `portfolio/case-study.md` | Portfolio case study narrative |
 
 Notes:
 
@@ -104,6 +110,8 @@ Notes:
 - Process diagrams are `.mmd` sources, not pasted images. They render on GitHub and remain reviewable as text; the prose is the authoritative description if a diagram and the text ever disagree.
 - A **provisional** decision (`DEC-11`–`DEC-21`) is a design position, not a business fact. It is listed in `docs/assumptions-risks.md` §5 with the `DQ-` it stands in for, and it does not close that question.
 - A fit-gap **hypothesis** is not a vendor claim. No product was selected (`DQ-61`), so every `Fit` in `docs/fit-gap-analysis.md` means "expected standard capability", not "confirmed in the product".
+- **A test plan is not a test result.** Every scenario in `docs/UAT-plan.md` is `Not run` because no system exists. `docs/traceability-matrix.md` records the planned link from requirement to scenario; it does not record a pass.
+- **Sample data is synthetic and illustrative.** The CSVs in `data/` demonstrate structure, referential integrity, and edge cases. They are not a migration extract, not a volume test, and not derived from any real company.
 
 ---
 
@@ -147,8 +155,8 @@ Reading order for a reviewer who wants the business story only: `docs/business-c
 | `SOD-` | Segregation-of-duties conflict | `docs/role-authorization-matrix.md` §6 |
 | `DE-` | Data entity | `docs/data-catalogue.md` §3 |
 | `INT-` | Integration interface | `docs/integration-inventory.md` §3 |
-| `TST-` / `UAT-` | Test case | Phase 4 |
-| `DM-` | Data migration object | Phase 4 |
+| `UAT-` | User acceptance test scenario (planned) | `docs/UAT-plan.md` §6 |
+| `DM-` | Data migration object | `docs/data-migration-plan.md` §3 |
 
 Rules:
 
@@ -219,7 +227,31 @@ A reviewer should read Gate 3 as "the design is specific enough to test", not "t
 
 ---
 
-## 9. Working rules for this repository
+## 9. Phase 4 gate evidence (`Plan.md` §6, Gate 4)
+
+| Gate 4 criterion | Evidence | Status |
+|---|---|---|
+| UAT scenarios are linked to requirements | `docs/UAT-plan.md` §6; `docs/traceability-matrix.md` §2 `UAT` column — all 23 FRs linked | Met (planned) |
+| Test data is prepared | `data/sample-customer-master.csv`, `data/sample-product-master.csv`, `data/sample-sales-orders.csv`; dictionary and edge cases in `data/README.md` | Met (synthetic, illustrative) |
+| Expected results are explicit | `docs/UAT-plan.md` §6 expected-result column; five full scripts in §7 | Met |
+| Critical exceptions are covered | `EX-01`–`EX-15` each have a handling path in `docs/to-be-process.md` §7; scenario mapping in `docs/UAT-plan.md` §6.1 | Met |
+| Migration readiness is planned | `docs/data-migration-plan.md` — 12 objects, load sequence, 29 reconciliation checks | Met (plan) |
+| Every `Must` acceptance criterion has a scenario | 22 / 22 AC covered by 33 scenarios | Met |
+| `Should` requirements are covered or explicitly deferred | 6 / 6 covered by UAT-22…UAT-27 | Met |
+
+**Gate 4 pass condition in this simulation:** test *readiness*, not test success. What is explicitly not established:
+
+1. **Nothing has been executed.** All 33 scenarios are `Not run`; entry criteria in §4.1 are `Not met` because no environment exists (`DEP-07`).
+2. **No independence.** The same author writes the expected result and would judge the outcome; real UAT requires business users in their own roles.
+3. **No volume or performance evidence.** `DQ-05` and `DQ-57` remain open, so no load or performance claim is made.
+4. **Threshold tests test the mechanism, not the policy.** UAT-17 and UAT-22 depend on credit and approval limits that are still policy placeholders (`DQ-45`, `DQ-46`).
+5. **Sample data proves structure, not quality.** Fifteen orders demonstrate referential integrity; they say nothing about legacy data quality.
+
+A reviewer should read Gate 4 as "the design is falsifiable and ready to test", not "the design has passed acceptance".
+
+---
+
+## 10. Working rules for this repository
 
 - Documents and analysis only. No application is built, and no ERP environment is installed (`Plan.md` §8).
 - Vendor-neutral language. Capability statements are hypotheses until validated (`PRD.md` §8).
@@ -229,10 +261,11 @@ A reviewer should read Gate 3 as "the design is specific enough to test", not "t
 
 ---
 
-## 10. Version history
+## 11. Version history
 
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 12 Nov 2026 | Initial repository README; Phase 1 deliverables added |
 | 0.2 | 12 Nov 2026 | Phase 2 complete as a draft baseline: To-Be process, requirements catalogue, traceability matrix, three Mermaid diagram sources; Gate 2 evidence added; provisional decisions `DEC-11`–`DEC-21` recorded and linked |
 | 0.3 | 12 Nov 2026 | Phase 3 complete as a draft baseline: fit-gap analysis, functional blueprint, role and authorization matrix, data catalogue, integration inventory, architecture and data-model diagrams; Gate 3 evidence added |
+| 0.4 | 12 Nov 2026 | Phase 4 complete as a draft baseline: UAT plan with 33 scenarios, data migration plan with 12 objects and 29 reconciliation checks, three synthetic sample CSVs with a data dictionary; traceability matrix v0.2 adds the `UAT` column; Gate 4 evidence added. No test was executed. |

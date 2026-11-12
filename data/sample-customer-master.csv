@@ -1,0 +1,13 @@
+customer_id,legal_name,tax_id,city,province,segment,payment_terms,credit_limit_idr,status,sales_owner
+CUST-0001,PT Bumi Retail Sentosa,00.000.000.0-000.001,Jakarta,DKI Jakarta,Retail,NET30,250000000,Active,Rita
+CUST-0002,CV Karya Niaga Utama,00.000.000.0-000.002,Surabaya,Jawa Timur,Wholesale,NET45,150000000,Active,Budi
+CUST-0003,PT Lintas Gudang Mandiri,00.000.000.0-000.003,Bandung,Jawa Barat,Wholesale,COD,0,Active,Budi
+CUST-0004,PT Cahaya Pasar Nusantara,00.000.000.0-000.004,Medan,Sumatera Utara,Retail,NET30,300000000,Active,Rita
+CUST-0005,CV Sumber Ritel Sejahtera,00.000.000.0-000.005,Semarang,Jawa Tengah,Retail,NET30,75000000,Blocked,Rita
+CUST-0006,PT Anugerah Horeca Supply,00.000.000.0-000.006,Denpasar,Bali,Horeca,NET14,120000000,Active,Budi
+CUST-0007,PT Tiga Pilar Industri,00.000.000.0-000.007,Bekasi,Jawa Barat,Industrial,COD,0,Active,Rita
+CUST-0008,PT Mitra Toko Kelontong,00.000.000.0-000.008,Yogyakarta,DI Yogyakarta,Retail,NET45,200000000,Active,Budi
+CUST-0009,CV Prima Bahan Bangunan,00.000.000.0-000.009,Makassar,Sulawesi Selatan,Industrial,NET30,90000000,Active,Rita
+CUST-0010,PT Sinar Pasar Lama,00.000.000.0-000.010,Surakarta,Jawa Tengah,Retail,NET30,50000000,Inactive,Budi
+CUST-0011,PT Distribusi Pulau Sejahtera,00.000.000.0-000.011,Balikpapan,Kalimantan Timur,Wholesale,NET30,175000000,Active,Rita
+CUST-0012,CV Harapan Warung Bersama,00.000.000.0-000.012,Depok,Jawa Barat,Retail,NET14,60000000,Active,Budi

@@ -1,0 +1,21 @@
+product_id,description,category,base_uom,sales_uom,conversion,list_price_idr,tax_class,status
+SKU-1001,Air Mineral Kemasan 600ml,Beverage,EA,CTN,24,48000,STANDARD,Active
+SKU-1002,Air Mineral Galon 19L,Beverage,EA,GAL,1,22000,STANDARD,Active
+SKU-1003,Teh Botol 350ml,Beverage,EA,CTN,24,96000,STANDARD,Active
+SKU-1004,Kopi Sachet 20g,Beverage,EA,BOX,12,36000,STANDARD,Active
+SKU-1005,Sabun Mandi 100g,Personal Care,EA,CTN,48,168000,STANDARD,Active
+SKU-1006,Shampoo Sachet 10ml,Personal Care,EA,BOX,24,42000,STANDARD,Active
+SKU-1007,Pasta Gigi 120g,Personal Care,EA,CTN,24,144000,STANDARD,Active
+SKU-1008,Deterjen Bubuk 800g,Home Care,EA,CTN,12,156000,STANDARD,Active
+SKU-1009,Pembersih Lantai 1L,Home Care,EA,CTN,12,132000,STANDARD,Active
+SKU-1010,Tisu Gulung 200 sheet,Home Care,EA,CTN,30,105000,STANDARD,Active
+SKU-1011,Beras Premium 5kg,Food,EA,SAK,1,78000,EXEMPT,Active
+SKU-1012,Minyak Goreng 2L,Food,EA,CTN,6,210000,STANDARD,Active
+SKU-1013,Gula Pasir 1kg,Food,EA,SAK,1,16500,STANDARD,Active
+SKU-1014,Tepung Terigu 1kg,Food,EA,SAK,1,14000,STANDARD,Active
+SKU-1015,Kopi Bubuk 250g,Beverage,EA,BOX,12,90000,STANDARD,Active
+SKU-1016,Sarung Tangan Katun,Industrial,PAIR,PACK,12,60000,STANDARD,Active
+SKU-1017,Masker Wajah 3ply,Industrial,EA,BOX,50,75000,STANDARD,Active
+SKU-1018,Lakban Bening 48mm,Industrial,EA,CTN,24,84000,STANDARD,Active
+SKU-1019,Helm Proyek,Industrial,EA,CTN,6,270000,STANDARD,Blocked
+SKU-1020,Sepatu Kerja,Industrial,PAIR,CTN,6,540000,STANDARD,Active
