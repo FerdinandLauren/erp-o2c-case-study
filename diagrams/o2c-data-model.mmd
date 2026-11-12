@@ -1,0 +1,26 @@
+erDiagram
+    CUSTOMER ||--o{ SALES_ORDER : places
+    CUSTOMER ||--o{ PAYMENT : remits
+    CUSTOMER ||--o| CREDIT_LIMIT : has
+    CUSTOMER ||--o{ INVOICE : billed_to
+    PRODUCT ||--o{ ORDER_LINE : appears_in
+    PRODUCT ||--o{ DELIVERY_LINE : ships_as
+    PRODUCT ||--o{ INVENTORY_BALANCE : stocked_as
+    PRODUCT ||--o{ PRICE_CONDITION : priced_by
+    WAREHOUSE ||--o{ INVENTORY_BALANCE : holds
+    WAREHOUSE ||--o{ DELIVERY : ships_from
+    SALES_ORDER ||--|{ ORDER_LINE : contains
+    SALES_ORDER ||--o{ DELIVERY : fulfilled_by
+    SALES_ORDER ||--o{ INVOICE : billed_as
+    DELIVERY ||--|{ DELIVERY_LINE : contains
+    DELIVERY ||--o| INVOICE : triggers
+    DELIVERY ||--o{ RETURN_REQUEST : returned_by
+    INVOICE ||--o{ INVOICE_LINE : contains
+    INVOICE ||--o{ ALLOCATION : settled_by
+    INVOICE ||--o{ CREDIT_NOTE : reduced_by
+    PAYMENT ||--o{ ALLOCATION : applied_as
+    RETURN_REQUEST ||--o| CREDIT_NOTE : results_in
+    CUSTOMER ||--o{ RETURN_REQUEST : raises
+    SALES_ORDER ||--o{ AUDIT_ENTRY : logged_in
+    INVOICE ||--o{ AUDIT_ENTRY : logged_in
+    PAYMENT ||--o{ AUDIT_ENTRY : logged_in

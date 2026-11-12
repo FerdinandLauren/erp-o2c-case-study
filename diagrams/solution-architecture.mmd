@@ -1,0 +1,72 @@
+flowchart TB
+    subgraph Users["User channels"]
+        U1["Sales desk<br/>order entry"]
+        U2["Warehouse terminal<br/>pick / pack / ship"]
+        U3["Finance workstation<br/>billing / AR / credit"]
+        U4["Management reporting<br/>read-only"]
+    end
+
+    subgraph Core["ERP core - Order-to-Cash (conceptual)"]
+        direction TB
+        MD["Master data<br/>customer, product, warehouse, price"]
+        SO["Sales order<br/>entry, validation, pricing"]
+        AP["Approval and credit<br/>value bands, exposure check"]
+        INV["Inventory<br/>ATP, reservation, backorder"]
+        WH["Warehouse<br/>picking, packing, goods issue"]
+        DL["Delivery and POD<br/>shipment, evidence"]
+        BL["Billing<br/>invoice from confirmed delivery"]
+        AR["Receivables<br/>payment, allocation, ageing"]
+        RT["Returns<br/>request, authorise, credit note"]
+        AU["Audit and status history<br/>who, what, when, why"]
+        RP["Operational reporting<br/>orders, fulfilment, billing, AR"]
+    end
+
+    subgraph External["External systems (conceptual, not implemented)"]
+        CRM["CRM / customer portal<br/>optional"]
+        WMS["Warehouse management<br/>optional"]
+        CAR["Carrier tracking"]
+        BANK["Bank statement channel"]
+        TAX["Tax / e-invoice channel"]
+        BI["Reporting platform<br/>optional"]
+    end
+
+    U1 --> SO
+    U2 --> WH
+    U3 --> BL
+    U3 --> AR
+    U4 --> RP
+
+    MD --> SO
+    SO --> AP
+    AP --> INV
+    INV --> WH
+    WH --> DL
+    DL --> BL
+    BL --> AR
+    AR --> RP
+    RT --> AR
+    RT --> INV
+    DL --> RT
+    BL --> RT
+
+    SO --> AU
+    WH --> AU
+    BL --> AU
+    AR --> AU
+    RT --> AU
+    AU --> RP
+
+    CRM -.->|"customer and order data"| SO
+    WMS -.->|"stock and fulfilment"| INV
+    WMS -.->|"goods movement"| WH
+    CAR -.->|"delivery events"| DL
+    BANK -.->|"payments and statements"| AR
+    TAX -.->|"statutory invoice data"| BL
+    RP -.->|"reporting extract"| BI
+
+    classDef core fill:#eef3f8,stroke:#33506b,color:#16212b
+    classDef ext fill:#f7f4ec,stroke:#8a7b5c,color:#2a251b,stroke-dasharray: 4 3
+    classDef user fill:#ffffff,stroke:#7a8794,color:#1c2733
+    class MD,SO,AP,INV,WH,DL,BL,AR,RT,AU,RP core
+    class CRM,WMS,CAR,BANK,TAX,BI ext
+    class U1,U2,U3,U4 user

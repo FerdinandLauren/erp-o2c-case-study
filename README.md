@@ -32,7 +32,7 @@ It is **not** a software product, a working ERP, or a configuration guide.
 |---|---|---|---|
 | 1 | Business discovery | Days 1–4 | **Complete as a draft baseline** — 5 deliverables, 63 open questions, Gate 1 evidence recorded |
 | 2 | Requirements and process design | Days 5–9 | **Complete as a draft baseline** — To-Be process, 23 FR, 22 AC, 11 NFR, 15 BR, traceability matrix |
-| 3 | Fit-gap analysis and solution blueprint | Days 10–15 | Planned |
+| 3 | Fit-gap analysis and solution blueprint | Days 10–15 | **Complete as a draft baseline** — 23 fit-gap findings, blueprint, 9 roles, 25 data entities, 7 interfaces |
 | 4 | Testing and migration readiness | Days 16–20 | Planned |
 | 5 | Deployment and portfolio preparation | Days 21–25 | Planned |
 
@@ -71,21 +71,27 @@ Status definitions: `Complete as a draft baseline` = written, internally consist
 | `diagrams/to-be-o2c.mmd` | To-Be forward process diagram source | Draft |
 | `diagrams/o2c-reverse-flow.mmd` | Returns and credit-note flow diagram source | Draft |
 
-### 3.4 Phase 3–5 deliverables (planned)
+### 3.4 Phase 3 deliverables
+
+| Path | Deliverable (per `Plan.md` §3) | Status |
+|---|---|---|
+| `docs/fit-gap-analysis.md` | Fit-Gap Analysis — 23 requirement findings, 8 process findings, validation plan | Draft — hypotheses, no product selected |
+| `docs/functional-blueprint.md` | Functional Solution Blueprint — architecture, document chain, 23 configuration objects | Draft |
+| `docs/role-authorization-matrix.md` | Role and Authorization Matrix — 9 roles, 10 SOD conflicts, status-based permissions | Draft |
+| `docs/data-catalogue.md` | Data Catalogue — 25 entities, 16 quality rules, migration implications | Draft |
+| `docs/integration-inventory.md` | Integration Inventory — 7 candidate interfaces, ownership, cut-over stance | Draft |
+| `diagrams/solution-architecture.mmd` | Conceptual architecture diagram source | Draft |
+| `diagrams/o2c-data-model.mmd` | Entity-relationship diagram source | Draft |
+
+### 3.5 Phase 4–5 deliverables (planned)
 
 | Path | Deliverable | Phase |
 |---|---|---|
-| `docs/fit-gap-analysis.md` | Fit-Gap Analysis | 3 |
-| `docs/functional-blueprint.md` | Functional Solution Blueprint | 3 |
-| `docs/role-authorization-matrix.md` | Role and Authorization Matrix | 3 |
-| `docs/data-catalogue.md` | Data Catalogue | 3 |
-| `docs/integration-inventory.md` | Integration Inventory | 3 |
 | `docs/UAT-plan.md` | UAT Plan and Scenario Catalogue | 4 |
 | `docs/data-migration-plan.md` | Data Migration Plan and Reconciliation Checklist | 4 |
 | `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria | 5 |
 | `docs/hypercare-plan.md` | Hypercare Plan | 5 |
 | `docs/change-management-plan.md` | Change Management and Training Plan | 5 |
-| `diagrams/solution-architecture.mmd` | Conceptual architecture diagram source | 3 |
 | `data/sample-customer-master.csv` | Synthetic customer master sample | 4 |
 | `data/sample-product-master.csv` | Synthetic product master sample | 4 |
 | `data/sample-sales-orders.csv` | Synthetic sales order sample | 4 |
@@ -94,9 +100,10 @@ Status definitions: `Complete as a draft baseline` = written, internally consist
 Notes:
 
 - `Plan.md` §4 lists the intended final structure. Phase 1 adds two files not named there — `discovery-questions.md` and `assumptions-risks.md` — because Phase 1 explicitly requires those deliverables.
-- `Plan.md` names one To-Be diagram; Phase 2 adds `o2c-reverse-flow.mmd` because the returns flow is a separate decision path and cannot be read clearly on the forward diagram.
-- Process diagrams are `.mmd` sources, not pasted images. They render on GitHub and remain reviewable as text; the prose in `docs/to-be-process.md` is the authoritative description if a diagram and the text ever disagree.
+- `Plan.md` names one To-Be diagram; Phase 2 adds `o2c-reverse-flow.mmd` because the returns flow is a separate decision path and cannot be read clearly on the forward diagram. Phase 3 adds `o2c-data-model.mmd` because the entity relationships in `docs/data-catalogue.md` are easier to audit as a diagram than as five tables.
+- Process diagrams are `.mmd` sources, not pasted images. They render on GitHub and remain reviewable as text; the prose is the authoritative description if a diagram and the text ever disagree.
 - A **provisional** decision (`DEC-11`–`DEC-21`) is a design position, not a business fact. It is listed in `docs/assumptions-risks.md` §5 with the `DQ-` it stands in for, and it does not close that question.
+- A fit-gap **hypothesis** is not a vendor claim. No product was selected (`DQ-61`), so every `Fit` in `docs/fit-gap-analysis.md` means "expected standard capability", not "confirmed in the product".
 
 ---
 
@@ -123,7 +130,7 @@ Reading order for a reviewer who wants the business story only: `docs/business-c
 | `BR-` | Business rule | `docs/requirements.md` §6 (baseline from `PRD.md` §7) |
 | `S1`–`S10` | To-Be forward stage | `docs/to-be-process.md` §3 |
 | `R1`–`R5` | To-Be reverse-flow stage | `docs/to-be-process.md` §4 |
-| `EX-` | Process exception | `docs/to-be-process.md` §6 |
+| `EX-` | Process exception | `docs/to-be-process.md` §7 |
 | `STK-` | Stakeholder | `docs/stakeholder-analysis.md` |
 | `KPI-` | Operational KPI | `PRD.md` §10 |
 | `PP-` | As-Is pain point | `docs/as-is-process.md` |
@@ -133,10 +140,15 @@ Reading order for a reviewer who wants the business story only: `docs/business-c
 | `RSK-` | Risk | `docs/assumptions-risks.md` |
 | `DEP-` | Dependency | `docs/assumptions-risks.md` |
 | `DEC-` | Logged design decision (`Agreed` or `Provisional`) | `docs/assumptions-risks.md` |
-| `FG-` | Fit-gap finding | Phase 3 |
+| `FG-` | Fit-gap finding | `docs/fit-gap-analysis.md` |
+| `FG-P` | Process or policy finding (not a software gap) | `docs/fit-gap-analysis.md` §6 |
+| `CFG-` | Configuration design object | `docs/functional-blueprint.md` §8 |
+| `ROL-` | Role in the access design | `docs/role-authorization-matrix.md` §3 |
+| `SOD-` | Segregation-of-duties conflict | `docs/role-authorization-matrix.md` §6 |
+| `DE-` | Data entity | `docs/data-catalogue.md` §3 |
+| `INT-` | Integration interface | `docs/integration-inventory.md` §3 |
 | `TST-` / `UAT-` | Test case | Phase 4 |
 | `DM-` | Data migration object | Phase 4 |
-| `INT-` | Integration interface | Phase 3 |
 
 Rules:
 
@@ -183,7 +195,31 @@ A reviewer should read Gate 2 as "the design holds together", not "the design is
 
 ---
 
-## 8. Working rules for this repository
+## 8. Phase 3 gate evidence (`Plan.md` §6, Gate 3)
+
+| Gate 3 criterion | Evidence | Status |
+|---|---|---|
+| Every `Must` requirement has a fit-gap classification | `docs/fit-gap-analysis.md` §3 — one FG row per FR-01…FR-23, including all 17 `Must` | Met (hypothesis) |
+| Functional solution is documented | `docs/functional-blueprint.md` — landscape, document chain, stage design, 23 configuration objects | Met |
+| Roles and responsibilities are defined | `docs/role-authorization-matrix.md` — 9 roles, permission matrix, 10 SOD conflicts | Met (proposed) |
+| Data requirements are identified | `docs/data-catalogue.md` — 25 entities, 16 quality rules, ownership, migration scope | Met |
+| Integration requirements are identified | `docs/integration-inventory.md` — 7 interfaces, ownership, cut-over stance | Met (candidate list) |
+| Architecture is coherent with the process design | `diagrams/solution-architecture.mmd`; every To-Be stage maps to a core component | Met |
+| Known gaps and decisions are visible | `docs/fit-gap-analysis.md` §9, `docs/functional-blueprint.md` §10, `docs/integration-inventory.md` §8 | Met |
+
+**Gate 3 pass condition in this simulation:** the design is complete enough to test, not proven against any product. What is explicitly not established:
+
+1. **No product validation.** Every `Fit` is an inference about mainstream capability, not a vendor confirmation (`DQ-61`, `DQ-63`).
+2. **No policy values.** Approval bands, tolerances, credit limits, and price tolerances are blank parameters (`DQ-17`, `DQ-26`, `DQ-45`, `DQ-46`).
+3. **No data profile.** Entity design is unvalidated against real source data, because none exists (`DEP-04`).
+4. **No interface agreement.** The inventory is a candidate list; no system owner has confirmed anything (`DQ-53`).
+5. **No effort estimate.** Counting configuration objects would create false precision, so none is given.
+
+A reviewer should read Gate 3 as "the design is specific enough to test", not "the solution is designed".
+
+---
+
+## 9. Working rules for this repository
 
 - Documents and analysis only. No application is built, and no ERP environment is installed (`Plan.md` §8).
 - Vendor-neutral language. Capability statements are hypotheses until validated (`PRD.md` §8).
@@ -193,9 +229,10 @@ A reviewer should read Gate 2 as "the design holds together", not "the design is
 
 ---
 
-## 9. Version history
+## 10. Version history
 
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 12 Nov 2026 | Initial repository README; Phase 1 deliverables added |
 | 0.2 | 12 Nov 2026 | Phase 2 complete as a draft baseline: To-Be process, requirements catalogue, traceability matrix, three Mermaid diagram sources; Gate 2 evidence added; provisional decisions `DEC-11`–`DEC-21` recorded and linked |
+| 0.3 | 12 Nov 2026 | Phase 3 complete as a draft baseline: fit-gap analysis, functional blueprint, role and authorization matrix, data catalogue, integration inventory, architecture and data-model diagrams; Gate 3 evidence added |
