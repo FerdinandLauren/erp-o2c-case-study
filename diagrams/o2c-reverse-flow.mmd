@@ -1,0 +1,10 @@
+flowchart LR
+    R1["R1 Return request<br/>reason and reference"] --> R2{"R2 Within policy?"}
+    R2 -- "No" --> R3["Reject with reason"]
+    R2 -- "Yes" --> R4["R3 Authorise return"]
+    R4 --> R5["Receive and inspect goods"]
+    R5 --> R6{"Goods accepted?"}
+    R6 -- "No" --> R7["Dispute or scrap<br/>reason recorded"]
+    R6 -- "Yes" --> R8["R4 Create credit note<br/>linked to delivery and invoice"]
+    R8 --> R9["R5 Update invoice status<br/>stock and AR ageing"]
+    R9 --> R10["Return closed"]

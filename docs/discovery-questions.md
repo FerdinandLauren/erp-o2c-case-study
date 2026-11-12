@@ -1,10 +1,10 @@
 # Discovery Questions and Open Decisions
 
 **Document ID:** DQ-REG
-**Version:** 0.1 (Draft)
-**Phase:** 1 — Business Discovery
+**Version:** 0.2 (Draft)
+**Phase:** 1–2 — Business Discovery, Requirements and Process Design
 **Source documents:** `PRD.md` §7–§9, §12; `Design.md` §12; `docs/business-context.md`; `docs/as-is-process.md`
-**Status:** 63 open items — none answered
+**Status:** 63 open items — none answered; 17 `Blocker` items carry a documented provisional position (`DEC-11`–`DEC-21`)
 
 ---
 
@@ -218,6 +218,46 @@ To be completed as questions are answered. Format is fixed so answers are audita
 | ID | Answer | Answered by | Date | Evidence / reference | Impact on documents |
 |---|---|---|---|---|---|
 | — | *No answers recorded. This is expected at the start of Phase 1.* | — | — | — | — |
+
+### 5.1 Provisional positions (not answers)
+
+Seventeen `Blocker` items remain `Open`. To let Phase 2 proceed without inventing business facts, each one received either a **documented provisional design position** or an explicit scope assumption. Positions are recorded in `docs/assumptions-risks.md` §5 as `DEC-11`–`DEC-21` — not here, because they are design choices, not the business's answers.
+
+**Blockers resolved to a provisional decision (8):**
+
+| DQ | Provisional position | Decision |
+|---|---|---|
+| DQ-22 | Returns and credit notes included as reverse flow | DEC-16 |
+| DQ-24 | Stock reserved at order confirmation | DEC-12 |
+| DQ-26 | Over-delivery 0% without approval; partial and backorder allowed | DEC-15 |
+| DQ-33 | Billing trigger is confirmed POD | DEC-11 |
+| DQ-34 | One invoice per delivery; consolidation deferred | DEC-17 |
+| DQ-41 | Auto-match on amount plus reference; residual to unapplied cash | DEC-18 |
+| DQ-45 | Credit exposure checked before value-band approval | DEC-14 |
+| DQ-46 | Value bands A/B/C; thresholds remain policy to be set | DEC-14 |
+
+**Blockers carried by a scope assumption (6), not decided here:**
+
+| DQ | Carried by | Where it is revisited |
+|---|---|---|
+| DQ-01 | `AS-02`, `AS-03` — single entity, single currency | Design reopens if wave 1 expands |
+| DQ-02 | `AS-05` — buy-and-resell only | Design reopens if manufacturing enters scope |
+| DQ-03 | `AS-08` — P2P outside wave 1 | Programme sequencing / Phase 3 boundary |
+| DQ-08 | `AS-15` — master data ownership inferred | Data catalogue in Phase 3 |
+| DQ-37 | `AS-09` — statutory tax rules validated by Finance | Invoice design in Phase 3 (`FR-22`) |
+| DQ-61 | `AS-10` — standard capability assumed | Fit-gap in Phase 3 (`RSK-06`) |
+
+**Blockers answered by a Phase 3 or Phase 4 deliverable (3):**
+
+| DQ | Deliverable | Note |
+|---|---|---|
+| DQ-17 | `FR-19` + price-condition design | Requirement is proposed; source of prices still unknown |
+| DQ-53 | `docs/integration-inventory.md` (Phase 3) | Inventory lists candidates; owners still unconfirmed |
+| DQ-57 | `docs/data-migration-plan.md` (Phase 4) | Migration scope is proposed, not extracted |
+
+**Decisions that support the above but do not close a question:** `DEC-13` defines ATP arithmetic (DQ-25), `DEC-19` defines lifecycle statuses (DQ-31), and `DEC-20`/`DEC-21` fix numbering conventions. DQ-25 and DQ-31 are `High`, not `Blocker`.
+
+**Status rule:** a provisional position changes the document, never the question. An item becomes `Answered` only when a named person supplies the business answer with a date and evidence.
 
 ---
 

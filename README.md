@@ -30,13 +30,13 @@ It is **not** a software product, a working ERP, or a configuration guide.
 
 | Phase | Scope | Planned | Status |
 |---|---|---|---|
-| 1 | Business discovery | Days 1–4 | **In progress — deliverables drafted, awaiting validation** |
-| 2 | Requirements and process design | Days 5–9 | Planned |
+| 1 | Business discovery | Days 1–4 | **Complete as a draft baseline** — 5 deliverables, 63 open questions, Gate 1 evidence recorded |
+| 2 | Requirements and process design | Days 5–9 | **Complete as a draft baseline** — To-Be process, 23 FR, 22 AC, 11 NFR, 15 BR, traceability matrix |
 | 3 | Fit-gap analysis and solution blueprint | Days 10–15 | Planned |
 | 4 | Testing and migration readiness | Days 16–20 | Planned |
 | 5 | Deployment and portfolio preparation | Days 21–25 | Planned |
 
-Status definitions: `Complete` = reviewed and consistent; `Draft` = written, not yet validated; `Planned` = not started.
+Status definitions: `Complete as a draft baseline` = written, internally consistent, and gated on evidence, but not validated by a business owner (none exists in a fictional scenario); `Planned` = not started.
 
 ---
 
@@ -57,16 +57,24 @@ Status definitions: `Complete` = reviewed and consistent; `Draft` = written, not
 | `docs/business-context.md` | Business Context | Draft |
 | `docs/stakeholder-analysis.md` | Stakeholder Analysis | Draft |
 | `docs/as-is-process.md` | As-Is Process | Draft |
-| `docs/discovery-questions.md` | Discovery Questions | Draft |
-| `docs/assumptions-risks.md` | Assumptions and Risks Register | Draft |
+| `docs/discovery-questions.md` | Discovery Questions | Draft v0.2 — 63 items, 17 blockers, provisional positions mapped |
+| `docs/assumptions-risks.md` | Assumptions and Risks Register | Draft v0.2 — 18 assumptions, 16 risks, 8 dependencies, 21 decisions |
 
-### 3.3 Phase 2–5 deliverables (planned)
+### 3.3 Phase 2 deliverables
+
+| Path | Deliverable (per `Plan.md` §3) | Status |
+|---|---|---|
+| `docs/to-be-process.md` | To-Be Process — 10 forward stages, 5 reverse-flow stages, 15 exceptions, status models | Draft |
+| `docs/requirements.md` | Functional and non-functional requirement catalogue, business rules | Draft — 23 FR, 22 AC, 11 NFR, 15 BR |
+| `docs/traceability-matrix.md` | Requirement Traceability Matrix | Draft — forward and reverse trace complete |
+| `diagrams/as-is-o2c.mmd` | As-Is process diagram source (extracted from Phase 1) | Draft |
+| `diagrams/to-be-o2c.mmd` | To-Be forward process diagram source | Draft |
+| `diagrams/o2c-reverse-flow.mmd` | Returns and credit-note flow diagram source | Draft |
+
+### 3.4 Phase 3–5 deliverables (planned)
 
 | Path | Deliverable | Phase |
 |---|---|---|
-| `docs/to-be-process.md` | To-Be Process | 2 |
-| `docs/requirements.md` | Functional and non-functional requirement catalogue, business rules | 2 |
-| `docs/traceability-matrix.md` | Requirement Traceability Matrix | 2–4 |
 | `docs/fit-gap-analysis.md` | Fit-Gap Analysis | 3 |
 | `docs/functional-blueprint.md` | Functional Solution Blueprint | 3 |
 | `docs/role-authorization-matrix.md` | Role and Authorization Matrix | 3 |
@@ -77,8 +85,6 @@ Status definitions: `Complete` = reviewed and consistent; `Draft` = written, not
 | `docs/cutover-plan.md` | Cutover Plan and Go/No-Go Criteria | 5 |
 | `docs/hypercare-plan.md` | Hypercare Plan | 5 |
 | `docs/change-management-plan.md` | Change Management and Training Plan | 5 |
-| `diagrams/as-is-o2c.mmd` | As-Is process diagram source | 1–2 |
-| `diagrams/to-be-o2c.mmd` | To-Be process diagram source | 2 |
 | `diagrams/solution-architecture.mmd` | Conceptual architecture diagram source | 3 |
 | `data/sample-customer-master.csv` | Synthetic customer master sample | 4 |
 | `data/sample-product-master.csv` | Synthetic product master sample | 4 |
@@ -88,7 +94,9 @@ Status definitions: `Complete` = reviewed and consistent; `Draft` = written, not
 Notes:
 
 - `Plan.md` §4 lists the intended final structure. Phase 1 adds two files not named there — `discovery-questions.md` and `assumptions-risks.md` — because Phase 1 explicitly requires those deliverables.
-- Diagrams currently live inline in `Design.md` and `docs/as-is-process.md`. They will be extracted to `diagrams/*.mmd` when Phase 2 freezes the process models, so there is one source of truth.
+- `Plan.md` names one To-Be diagram; Phase 2 adds `o2c-reverse-flow.mmd` because the returns flow is a separate decision path and cannot be read clearly on the forward diagram.
+- Process diagrams are `.mmd` sources, not pasted images. They render on GitHub and remain reviewable as text; the prose in `docs/to-be-process.md` is the authoritative description if a diagram and the text ever disagree.
+- A **provisional** decision (`DEC-11`–`DEC-21`) is a design position, not a business fact. It is listed in `docs/assumptions-risks.md` §5 with the `DQ-` it stands in for, and it does not close that question.
 
 ---
 
@@ -109,9 +117,13 @@ Reading order for a reviewer who wants the business story only: `docs/business-c
 
 | Prefix | Meaning | Defined in |
 |---|---|---|
-| `FR-` | Functional requirement | `PRD.md` §5 |
-| `NFR-` | Non-functional requirement | `PRD.md` §6 |
-| `BR-` | Business rule | `PRD.md` §7 |
+| `FR-` | Functional requirement | `docs/requirements.md` §3 (baseline from `PRD.md` §5) |
+| `AC-` | Acceptance criterion, Given/When/Then | `docs/requirements.md` §4 |
+| `NFR-` | Non-functional requirement | `docs/requirements.md` §5 (baseline from `PRD.md` §6) |
+| `BR-` | Business rule | `docs/requirements.md` §6 (baseline from `PRD.md` §7) |
+| `S1`–`S10` | To-Be forward stage | `docs/to-be-process.md` §3 |
+| `R1`–`R5` | To-Be reverse-flow stage | `docs/to-be-process.md` §4 |
+| `EX-` | Process exception | `docs/to-be-process.md` §6 |
 | `STK-` | Stakeholder | `docs/stakeholder-analysis.md` |
 | `KPI-` | Operational KPI | `PRD.md` §10 |
 | `PP-` | As-Is pain point | `docs/as-is-process.md` |
@@ -120,7 +132,7 @@ Reading order for a reviewer who wants the business story only: `docs/business-c
 | `AS-` | Assumption | `docs/assumptions-risks.md` |
 | `RSK-` | Risk | `docs/assumptions-risks.md` |
 | `DEP-` | Dependency | `docs/assumptions-risks.md` |
-| `DEC-` | Logged design decision | `docs/assumptions-risks.md` |
+| `DEC-` | Logged design decision (`Agreed` or `Provisional`) | `docs/assumptions-risks.md` |
 | `FG-` | Fit-gap finding | Phase 3 |
 | `TST-` / `UAT-` | Test case | Phase 4 |
 | `DM-` | Data migration object | Phase 4 |
@@ -131,6 +143,7 @@ Rules:
 1. Identifiers are permanent. A withdrawn item keeps its ID and is marked `Withdrawn` with a reason; IDs are never reused or renumbered.
 2. Every requirement, rule, and test must trace upward. Traceability is recorded in Phase 2 and completed in Phase 4.
 3. Nothing in this repository may state a fact that is not sourced from `PRD.md`/`Design.md`, labelled `AS-`, or raised as `DQ-`. This rule is the main defence against an invented case study.
+4. A `Must` requirement without an acceptance criterion cannot pass Gate 2. A `Should` requirement may defer its criterion to Phase 4, but the deferral must be named in `docs/traceability-matrix.md` §5.
 
 ---
 
@@ -148,7 +161,29 @@ Gate 1 is **not signed off** until a business owner confirms scope and stakehold
 
 ---
 
-## 7. Working rules for this repository
+## 7. Phase 2 gate evidence (`Plan.md` §6, Gate 2)
+
+| Gate 2 criterion | Evidence | Status |
+|---|---|---|
+| To-Be process is documented end to end | `docs/to-be-process.md` §3 (S1–S10), §4 (R1–R5), diagrams `to-be-o2c.mmd` and `o2c-reverse-flow.mmd` | Met |
+| Each requirement has unique ID, owner, priority, and source | `docs/requirements.md` §3 — 23 FR, all four attributes populated | Met |
+| Requirements are specific and testable | `docs/requirements.md` §4 — 22 Given/When/Then criteria covering 17/17 `Must` FRs | Met |
+| Business rules have an enforcement point or are marked proposed | `docs/requirements.md` §6 — 15 BR, 7 marked `To Validate` | Met |
+| Every business problem maps to a requirement | `docs/traceability-matrix.md` §3 — PP 6/6, CG 8/8, KPI 7/7 covered | Met |
+| Unknowns are recorded, not invented | `docs/discovery-questions.md` §5.1 — 17 blockers remain `Open`; 8 with a provisional position, 9 with a named assumption or later deliverable | Met by declaration |
+| Requirements conflict with the baseline are visible | `DEC-20` — baseline `FR-01`–`FR-15` unchanged; additions start at `FR-16` | Met |
+
+**Gate 2 pass condition in this simulation:** the design is complete and internally traceable; it is **not** validated. Three things are explicitly not proven:
+
+1. The 7 `To Validate` business rules depend on unanswered policy questions (`DQ-17`, `DQ-26`, `DQ-33`, `DQ-34`, `DQ-45`, `DQ-46`).
+2. Six `Should` requirements have no acceptance criteria yet (`docs/traceability-matrix.md` §5).
+3. NFR targets for availability, response time, retention, and volume are unquantified (`DQ-05`, `DQ-51`, `DQ-59`).
+
+A reviewer should read Gate 2 as "the design holds together", not "the design is right for a real company".
+
+---
+
+## 8. Working rules for this repository
 
 - Documents and analysis only. No application is built, and no ERP environment is installed (`Plan.md` §8).
 - Vendor-neutral language. Capability statements are hypotheses until validated (`PRD.md` §8).
@@ -158,8 +193,9 @@ Gate 1 is **not signed off** until a business owner confirms scope and stakehold
 
 ---
 
-## 8. Version history
+## 9. Version history
 
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 12 Nov 2026 | Initial repository README; Phase 1 deliverables added |
+| 0.2 | 12 Nov 2026 | Phase 2 complete as a draft baseline: To-Be process, requirements catalogue, traceability matrix, three Mermaid diagram sources; Gate 2 evidence added; provisional decisions `DEC-11`–`DEC-21` recorded and linked |

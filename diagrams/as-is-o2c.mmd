@@ -1,0 +1,35 @@
+flowchart LR
+    subgraph CUST["Customer"]
+        C1["Submit order<br/>email / spreadsheet"]
+    end
+
+    subgraph SALES["Sales"]
+        S1["Record order manually"]
+        S2["Check customer and<br/>product information"]
+    end
+
+    subgraph INV["Inventory"]
+        I1["Check stock in<br/>separate records<br/>(no reservation)"]
+    end
+
+    subgraph WH["Warehouse"]
+        W1["Receive manual<br/>fulfilment instruction"]
+        W2["Pick and pack"]
+    end
+
+    subgraph LOG["Logistics"]
+        L1["Arrange shipment"]
+        L2["Update delivery<br/>status separately"]
+    end
+
+    subgraph FIN["Finance"]
+        F1["Prepare invoice from<br/>order + delivery info"]
+        F2["Reconcile payment<br/>manually"]
+    end
+
+    subgraph MGMT["Management"]
+        M1["Consolidate reports<br/>from multiple sources"]
+    end
+
+    C1 --> S1 --> S2 --> I1
+    I1 --> W1 --> W2 --> L1 --> L2 --> F1 --> F2 --> M1

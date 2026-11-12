@@ -1,0 +1,50 @@
+flowchart TD
+    A["S1 Master data valid<br/>customer and product"] --> B["S2 Create sales order"]
+
+    B --> C{"S3 Order data valid?"}
+    C -- "No" --> C1["Return to Sales<br/>EX-02"]
+    C1 --> B
+
+    C -- "Yes" --> D{"S4 ATP sufficient?"}
+    D -- "No" --> D1["Backorder or reschedule<br/>EX-03"]
+    D1 --> D2{"Customer accepts?"}
+    D2 -- "No" --> X1["Order cancelled<br/>reason recorded"]
+    D2 -- "Yes" --> E
+
+    D -- "Yes" --> E{"S5 Credit and approval<br/>required?"}
+    E -- "Credit block" --> E1["Finance reviews<br/>EX-05"]
+    E1 --> E2{"Released?"}
+    E2 -- "No" --> X2["Order on hold<br/>block reason visible"]
+    E2 -- "Yes" --> F
+
+    E -- "Approval required" --> E3["Sales Manager reviews<br/>EX-04"]
+    E3 --> E4{"Approved?"}
+    E4 -- "No" --> X3["Rejected with reason<br/>EX-04"]
+    E4 -- "Yes" --> F
+
+    E -- "Not required" --> F["S6 Release to warehouse"]
+    F --> G["Pick and pack<br/>record quantities"]
+
+    G --> H{"Full quantity?"}
+    H -- "No" --> H1["Partial delivery<br/>backorder remainder<br/>EX-06"]
+    H1 --> I
+    H -- "Yes" --> I["S7 Ship and deliver"]
+
+    I --> J{"POD confirmed?"}
+    J -- "No" --> J1["Delivery exception<br/>EX-07"]
+    J1 --> I
+
+    J -- "Yes" --> K["S8 Create invoice<br/>per delivery"]
+    K --> L["S9 Record payment"]
+
+    L --> M{"Matched within<br/>tolerance?"}
+    M -- "No" --> M1["Unapplied cash<br/>AR investigates<br/>EX-09"]
+    M1 --> L
+
+    M -- "Yes" --> N["Allocate to invoice"]
+    N --> O["S10 Monitor receivables<br/>ageing and reporting"]
+
+    O --> P{"Fully paid?"}
+    P -- "No" --> P1["Collection follow-up<br/>EX-10"]
+    P1 --> O
+    P -- "Yes" --> Q["Receivable closed"]

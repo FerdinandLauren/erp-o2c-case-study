@@ -1,9 +1,9 @@
 # Assumptions, Risks, Dependencies, and Decisions
 
 **Document ID:** ARR-01
-**Version:** 0.1 (Draft)
-**Phase:** 1 — Business Discovery
-**Source documents:** `PRD.md` §1.5, §12; `Plan.md` §6–§7; `Design.md` §1, §12
+**Version:** 0.2 (Draft)
+**Phase:** 1–2 — Business Discovery, Requirements and Process Design
+**Source documents:** `PRD.md` §1.5, §12; `Plan.md` §6–§7; `Design.md` §1, §12; `docs/to-be-process.md` §5
 **Status:** Draft — registers open; reviewed at every phase gate
 
 ---
@@ -123,7 +123,10 @@ Scoring: Likelihood (L) and Impact (I) each 1–5. Score = L × I. Rating: **Hig
 
 ## 5. Decision log
 
-Decisions already made, with rationale, so they are not silently revisited.
+Decisions already made, with rationale, so they are not silently revisited. Two classes of entry exist:
+
+- **`Agreed`** — a project-level decision the author controls (`DEC-01`–`DEC-10`).
+- **`Provisional`** — a design position taken *because* a `Blocker` question cannot be answered in a fictional scenario (`DEC-11`–`DEC-21`). These are not business facts and must not be read as approved policy. Each names the `DQ-` item it stands in for and the event that would replace it.
 
 | ID | Decision | Rationale | Source | Status |
 |---|---|---|---|---|
@@ -137,6 +140,19 @@ Decisions already made, with rationale, so they are not silently revisited.
 | DEC-08 | Do not quantify benefits or ROI | No baseline exists; any figure would be fabricated | RSK-12 | Agreed |
 | DEC-09 | Stage 1–10 numbering follows `PRD §4`, not the grouped stages in `Design §2.1` | Keeps approval and delivery accountability visible in RACI and traceability | stakeholder-analysis.md §3 | Agreed |
 | DEC-10 | Documentation language is English, business context Indonesian | Portfolio readability for an international reviewer | AS-12 | Agreed |
+| DEC-11 | Billing trigger baseline is confirmed POD, invoiced per delivery | A design must choose one trigger; POD is the most controlled of the four candidates and makes the invoice defensible | DQ-33 | Provisional |
+| DEC-12 | Stock is reserved at order confirmation and released on cancellation | Commits stock only for orders that passed validation and approval; prevents reservation by abandoned drafts | DQ-24 | Provisional |
+| DEC-13 | Available-to-promise = on-hand minus reservations, excluding in-transit stock | In-transit quantity is not verifiable in the current data landscape; excluding it avoids promising goods the company cannot see | DQ-25 | Provisional |
+| DEC-14 | Approval by value band A/B/C with the credit check evaluated first | Separates commercial risk (credit) from spend authority (value) so one approval does not silently override the other | DQ-45, DQ-46 | Provisional |
+| DEC-15 | Over-delivery tolerance 0% without approval; partial delivery and backorder allowed | Under-delivery is operationally normal; over-delivery creates invoice and stock discrepancies | DQ-26 | Provisional |
+| DEC-16 | Returns and credit notes included as reverse flow (R1–R5) | An O2C design without a reverse flow is incomplete; the cost of designing it now is lower than retrofitting it | DQ-22 | Provisional |
+| DEC-17 | One invoice per delivery; consolidated invoicing deferred | Per-delivery invoicing keeps invoice-to-delivery traceability exact, which is the control the case study is built on | DQ-34 | Provisional |
+| DEC-18 | Payment auto-match on amount plus reference; residual posted to unapplied cash | A matching rule must exist before cash application can be designed; unmatched value stays visible instead of being forced onto an invoice | DQ-41 | Provisional |
+| DEC-19 | Order, delivery, invoice, payment, and return status models as defined in `docs/to-be-process.md` §8 | A single lifecycle definition per object prevents the same word meaning different things in different departments | DQ-31 | Provisional |
+| DEC-20 | New requirements use `FR-16`…`FR-23`; baseline `FR-01`…`FR-15` unchanged | Preserves traceability to the approved PRD baseline; no silent renumbering | Phase 1 findings | Agreed |
+| DEC-21 | Reverse flow numbered `R1`–`R5`; forward stages `S1`–`S10` unchanged | Keeps Phase 1 numbering intact and makes the extension visible rather than absorbed | `PRD.md` §4 | Agreed |
+
+**How to read a `Provisional` decision.** It is a *design placeholder with a named exit*. If the matching `DQ-` is answered differently, the decision is superseded, the affected requirements and rules are re-validated, and the change is recorded in §8. Nothing in Phase 2–5 should describe a provisional position as company policy.
 
 ---
 
@@ -162,6 +178,19 @@ Issues differ from risks: a risk may happen, an issue has happened. Examples tha
 
 **Rule:** a document may not pass a phase gate while it depends on an `Open` assumption that is also a `Blocker` question without saying so explicitly. Silent dependency is how projects fail politely.
 
+### 7.1 Provisional decisions and the phase gate
+
+`DEC-11`–`DEC-21` exist because 17 `Blocker` questions cannot be answered for a fictional company. They do **not** close those questions. Gate 2 passes on a documented position, not on invented business facts. A provisional decision must satisfy four tests:
+
+| Test | Meaning |
+|---|---|
+| Named | It has an ID, a rationale, and the `DQ-` it stands in for |
+| Bounded | It chooses one behaviour, not a range of possible behaviours |
+| Reversible | A different answer changes named requirements and rules, not the entire design |
+| Declared | Every document that depends on it says so where the dependency is used |
+
+A provisional decision that fails any test is not a decision — it is an unresolved question in disguise, and belongs back in `docs/discovery-questions.md`.
+
 ---
 
 ## 8. Change history
@@ -169,3 +198,4 @@ Issues differ from risks: a risk may happen, an issue has happened. Examples tha
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 12 Nov 2026 | Initial registers created in Phase 1: 18 assumptions, 16 risks, 8 dependencies, 10 decisions |
+| 0.2 | 12 Nov 2026 | Added `DEC-11`–`DEC-21` as provisional design positions covering 17 `Blocker` questions; decision log split into `Agreed` and `Provisional`; added §7.1 provisional-decision gate tests. Registers unchanged: 18 assumptions, 16 risks, 8 dependencies, 21 decisions |
